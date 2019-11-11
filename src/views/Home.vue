@@ -77,6 +77,12 @@ export default {
           probeType: 3,
           /* lock y-direction when scrolling horizontally and  vertically at the same time */
           directionLockThreshold: 0,
+          bounce: {
+              top: true,
+              bottom: true,
+              left: true,
+              right: true
+            }
         },
     }
   },
