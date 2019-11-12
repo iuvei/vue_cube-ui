@@ -6,6 +6,8 @@
     <cube-slide :auto-play="false" :loop="false" :show-dots="false"
                  @change="changePage" @scroll="scroll" ref="slide"
                 :options="slideOptions" :initial-index="initialIndex" nest-mode="free" direction="horizontal">
+ 
+
         <cube-slide-item>
               <Message-Groups></Message-Groups>
         </cube-slide-item>
@@ -28,6 +30,13 @@
                 ref="tabNav"
                 :data="tabs"
                 class="footer">
+  
+      <!-- 插槽图标 -->
+      <cube-tab v-for="(item, index) in tabs" :label="item.label" :key="item.label">
+        <i slot="icon" :class="item.icon"></i>
+        {{item.label}}
+      </cube-tab>
+
   </cube-tab-bar>
 
   <Notice></Notice>
@@ -78,11 +87,11 @@ export default {
           /* lock y-direction when scrolling horizontally and  vertically at the same time */
           directionLockThreshold: 0,
           bounce: {
-              top: true,
-              bottom: true,
-              left: true,
-              right: true
-            }
+            top: true,
+            bottom: true,
+            left: true,
+            right: true
+          },
         },
     }
   },
@@ -90,7 +99,7 @@ export default {
   methods:{
     changeHandler(label) {
       // if you clicked different tab, this methods can be emitted
-      console.log(label);
+      // console.log(label);
     },
     //通过滑动slide组件 来改变 当前的标签头
     changePage(current) {
@@ -98,7 +107,7 @@ export default {
       this.selectedLabelDefault = this.tabs[current].label;
     },
     clickHandler(item, index) {
-      console.log(item, index)
+      // console.log(item, index)
     },
       
     scroll(pos) {
@@ -145,6 +154,11 @@ export default {
 <style>
 .footer .cube-tab div {
   font-size: 0.3rem;
+  color: rgb(102, 102, 102);
+  margin-top: 0.1rem;
+}
+.footer .cube-tab{
+  font-size: 0.3rem !important;
   color: rgb(102, 102, 102);
   margin-top: 0.1rem;
 }

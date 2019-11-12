@@ -5,9 +5,8 @@
         <HomeHeader :msg="msg"></HomeHeader>
 
 <!-- 轮播图 -->
-<cube-slide :options="options" :data="items"/>
+<cube-slide :options="options" class="slideshow" :data="items"/>
 
-<div>
 <div class="tab-slide-container">
   <!-- 游戏标题 -->
   <cube-tab-bar v-model="selectedLabelDefault"
@@ -15,6 +14,14 @@
                 ref="tabNav"
                 :data="tabs"
                 >
+                <cube-tab v-for="(item, index) in tabs" :label="item.label" :key="item.label">
+                <!-- <i slot="icon" :class="item.icon"></i> -->
+                <div class="game_img" >
+                  <img :src=item.image>
+                </div>
+                
+                <div>{{item.label}}</div>
+              </cube-tab>
   </cube-tab-bar>
   <cube-slide :auto-play="false" :loop="false" :show-dots="false"
                 @change="changePage" @scroll="scroll" ref="slide"
@@ -40,9 +47,6 @@
         <div>4</div>
       </cube-slide-item>
   </cube-slide>
-</div>
-
-
 </div>
 
 
@@ -78,15 +82,19 @@ export default {
       tabs: [
         {
           label: '红包游戏',
+          image:require('../../assets/img/CrowdGroups/game_packets.gif')
         },
         {
           label: '电子游戏',
+          image:require('../../assets/img/CrowdGroups/game_electronic.gif')
         },
         {
           label: '棋牌游戏',
+          image:require('../../assets/img/CrowdGroups/game_chess.gif')
         },
         {
           label: '休闲游戏',
+          image:require('../../assets/img/CrowdGroups/game_leisure.gif')
         },
       ],
 
@@ -95,6 +103,8 @@ export default {
       },
       slideOptions: {
         stopPropagation:true,
+        listenScroll: true,
+        probeType: 3
       },
 
     }
@@ -106,10 +116,8 @@ export default {
   methods:{
 
     changePage(current) {
-      // console.log(current)
       this.selectedLabelDefault = this.tabs[current].label;
     },
-
     scroll(pos) {
       const x = Math.abs(pos.x);
       const tabItemWidth = this.$refs.tabNav.$el.clientWidth;
@@ -151,6 +159,7 @@ export default {
         this.tabs,
         item => item.label === this.selectedLabelDefault
       );
+      console.log(index)
       return index;
     }
   }
@@ -168,4 +177,26 @@ export default {
 </style>
 
 <style scoped>
+
+/* 轮播图 */
+.slideshow{
+  width: 100%;
+  height: 3.6rem;
+}
+
+.tab-slide-container{
+  width:100%;
+  height: calc(100vh - 6.2rem); /*1.2 , 3.6 , 1.4 */
+  background-color: rgb(230, 230, 230);
+}
+
+.game_img{
+  width: 2.5rem;
+  height: 2rem;
+}
+.game_img img{
+  width:1.5rem;
+  height: 1.5rem;
+  margin: 0.25rem .5rem;
+}
 </style>
