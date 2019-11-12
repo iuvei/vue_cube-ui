@@ -20,9 +20,8 @@
 </template>
 
 <script>
-
 export default {
-  name: 'notice',
+  name: 'Notice',
   data () {
     return {
         show_mask:true,

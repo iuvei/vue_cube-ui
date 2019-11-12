@@ -30,7 +30,7 @@
                 class="footer">
   </cube-tab-bar>
 
-  <notice></notice>
+  <Notice></Notice>
 </div>
 
 
@@ -42,11 +42,11 @@ import CrowdGroups from '@/components/home/CrowdGroups'            //群组
 import ActivityReward  from '@/components/home/ActivityReward'    //活动奖励组
 import AddressList  from '@/components/home/AddressList'          //通讯录
 
-import notice from '@/components/home/notice'                    //弹窗
+import Notice from '@/components/home/notice'                    //弹窗
 export default {
   name: "home",
   components: {
-    notice,
+    Notice,
     MessageGroups,
     CrowdGroups,
     ActivityReward,
@@ -143,15 +143,15 @@ export default {
 };
 </script>
 <style>
-.cube-tab div {
+.footer .cube-tab div {
   font-size: 0.3rem;
   color: rgb(102, 102, 102);
   margin-top: 0.1rem;
 }
-.cube-tab{
+.footer .cube-tab{
   font-size: 0.5rem;
 }
-.cube-tab_active {
+.footer .cube-tab_active {
   color: rgb(255, 67, 67) !important;
 }
 </style>

@@ -18,8 +18,6 @@
             <i>📱</i> <input  type="password" placeholder="请确认密码" autocomplete="off">
         </div>
 
-
-
         <a class=" nz_button nz_bg_gradual_orange nz_color_white"> 注册 </a> 
 
     </div>      
@@ -35,23 +33,22 @@ export default {
   data () {
     return {
         isGetAll:true, //临时
-        info:'',//
     }
   },
   created(){
-      this.getConfig()//获取注册时需要 收集哪些信息
+    //   this.getConfig()//获取注册时需要 收集哪些信息
   },
   methods :{
         //获取注册需要的数据
-        async getConfig() {
+        // async getConfig() {
 
-            await this.axios.get('http://easy.sibo9999.com/api/user/getUserField').then((response)=>{
-                this.info=response;
-            }).catch((response)=>{
-                console.log(response);
-            })
-            console.log(this.info)
-        },
+        //     await this.axios.get('http://easy.sibo9999.com/api/user/getUserField').then((response)=>{
+        //         this.info=response;
+        //     }).catch((response)=>{
+        //         console.log(response);
+        //     })
+        //     console.log(this.info)
+        // },
         
   }
  
@@ -69,7 +66,6 @@ export default {
     width: 100%;
     height: 1rem;
     background-color: #ffffff;
-    /* background-color: rgb(212, 17, 17); */
     margin: .1rem 0;
 }
 .item i{  
@@ -83,9 +79,10 @@ export default {
 }
 .item input{
     caret-color: red;
-    width: calc(100% - 2rem) ;
+    width: calc(100% - 1rem) ;
     background-color: #ffffff;
     height: 100%;
-    font-size:.4rem;
+    font-size:.3rem;
+    float: left;
 }
 </style>

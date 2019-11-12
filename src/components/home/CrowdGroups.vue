@@ -43,9 +43,7 @@
 </div>
 
 
-  <notice></notice>
 </div>
-
 
 
 
@@ -97,8 +95,8 @@ export default {
       },
       slideOptions: {
         stopPropagation:true,
-      }
-      
+      },
+
     }
   },
   created() {
@@ -170,6 +168,4 @@ export default {
 </style>
 
 <style scoped>
-
-
 </style>

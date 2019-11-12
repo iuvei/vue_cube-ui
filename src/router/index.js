@@ -4,8 +4,8 @@ import VueRouter from "vue-router";
 
 const Home = r => require.ensure([], () => r(require("@/views/Home.vue")), "Home");
 const Login = r => require.ensure([], () => r(require("@/views/login.vue")), "Login");
-const SignIn = r => require.ensure([], () => r(require("@/views/SignIn.vue")), "SiginIn");
-const SignUp = r => require.ensure([], () => r(require("@/views/SignUp.vue")), "SiginUp");
+const SignIn = r => require.ensure([], () => r(require("@/views/SignIn.vue")), "SignIn");
+const SignUp = r => require.ensure([], () => r(require("@/views/SignUp.vue")), "SignUp");
 
 Vue.use(VueRouter);
 

@@ -2,18 +2,18 @@
 <div>
      <TopHeader/>
      <div class="banner_box">
-        <mt-swipe :auto="3000">
-          <mt-swipe-item>
-              <img  class="banner_img" src="../assets/img/test1.png" alt="">
-          </mt-swipe-item>
-          <mt-swipe-item>
-              <img  class="banner_img" src="../assets/img/test2.png" alt="">
-          </mt-swipe-item>
-        </mt-swipe>
+        <cube-slide :show-dots="true" ref="slide" direction="horizontal">
+            <cube-slide-item>
+               <img  class="banner_img" src="../assets/img/test1.png" alt="">
+            </cube-slide-item>
+            <cube-slide-item>
+               <img  class="banner_img" src="../assets/img/test2.png" alt="">
+            </cube-slide-item>
+        </cube-slide>
      </div>
 
       <router-link to="/SignIn" class="nz_button nz_bg_gradual_orange nz_color_white"> 登录 </router-link>
-      <router-link to="/SiginUp" class="nz_button nz_bg_white nz_color_black"> 注册 </router-link>
+      <router-link to="/SignUp" class="nz_button nz_bg_white nz_color_black"> 注册 </router-link>
 </div>
 </template>
 
