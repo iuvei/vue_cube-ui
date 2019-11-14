@@ -33,22 +33,35 @@ export default {
   data () {
     return {
         isGetAll:true, //临时
+        info:'',
     }
   },
   created(){
-    //   this.getConfig()//获取注册时需要 收集哪些信息
+      this.getConfig()//获取注册时需要 收集哪些信息
   },
   methods :{
         //获取注册需要的数据
-        // async getConfig() {
+        getConfig() {
 
-        //     await this.axios.get('http://easy.sibo9999.com/api/user/getUserField').then((response)=>{
+        //    this.$http.post('api/user/getUserField',{
+        //         'type': 'register',
+        //         'source':2
+        //     }).then((response)=>{
+        //         console.log(response)
+        //         console.log(123)
         //         this.info=response;
         //     }).catch((response)=>{
         //         console.log(response);
         //     })
-        //     console.log(this.info)
-        // },
+
+            this.$http.get('http://gank.io/api/data/Android/10/1')
+            .then(response => (console.log(response)))
+            .catch(function (error) { // 请求失败处理
+                console.log(error);
+            });
+
+
+        },
         
   }
  

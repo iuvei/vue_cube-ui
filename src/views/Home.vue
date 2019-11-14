@@ -33,8 +33,11 @@
   
       <!-- 插槽图标 -->
       <cube-tab v-for="(item, index) in tabs" :label="item.label" :key="item.label">
-        <i slot="icon" :class="item.icon"></i>
-        {{item.label}}
+        <div :class="item.mark">
+            <div class="item_icon"></div>
+            <div class="item_label">{{item.label}}</div>
+        </div>
+        
       </cube-tab>
 
   </cube-tab-bar>
@@ -67,19 +70,24 @@ export default {
       selectedLabelDefault: '群组',
       tabs: [{
         label: '消息',
-        icon: 'cubeic-message',
+        mark: 'msg',
+        image:'../../assets/img/footer/ic_msg_nor.png'
       }, {
         label: '群组',
-        icon: 'cubeic-like',
+        mark: 'group',
+        image:'../../assets/img/footer/ic_msg_nor.png'
       }, {
         label: '活动奖励',
-        icon: 'cubeic-vip',
+        mark: 'activity',
+        image:'../../assets/img/footer/ic_msg_nor.png'
       }, {
         label: '通讯录',
-        icon: 'cubeic-phone',
+        mark: 'phone',
+        image:'../../assets/img/footer/ic_msg_nor.png'
       }, {
         label: '我的',
-        icon: 'cubeic-person',
+        mark: 'person',
+        image:'../../assets/img/footer/ic_msg_nor.png'
       }],
       slideOptions: {
           listenScroll: true,
@@ -155,12 +163,15 @@ export default {
 .footer .cube-tab div {
   font-size: 0.3rem;
   color: rgb(102, 102, 102);
-  margin-top: 0.1rem;
+  margin-top: 0rem;
 }
 .footer .cube-tab{
   font-size: 0.3rem !important;
   color: rgb(102, 102, 102);
-  margin-top: 0.1rem;
+  margin: 0rem !important;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0;
+  flex: 0;
 }
 .footer .cube-tab{
   font-size: 0.5rem;
@@ -185,4 +196,215 @@ export default {
   right: 0;
   bottom: 1.4rem;
 }
+
+</style>
+<style>
+/* 消息 */
+.footer .msg{
+  width: 1.8rem;
+  height: 1.4rem;
+  float: left;
+  /* background-color: aqua; */
+}
+.footer .msg .item_icon{
+  width: 1rem;
+  height: 1rem;
+  margin: 0 .4rem;
+  background: url(../assets/img/footer/ic_msg_nor.png) no-repeat;
+  background-size: 80%;
+  background-position: center center;
+}
+.cube-tab_active .msg .item_icon{
+  background: url(../assets/img/footer/ic_msg_sel.png) no-repeat !important ;
+  background-size: 80% !important;
+  background-position: center center !important;
+  transition:all .5s;
+}
+.footer .msg .item_label{
+  width: 1.8rem;
+  height: .4rem;
+  text-align: center;
+  /* background-color: rgb(0, 238, 255); */
+}
+
+/* 群组 */
+.footer .group{
+  width: 1.8rem;
+  height: 1.4rem;
+  float: left;
+  /* background-color: rgb(234, 255, 113); */
+}
+.footer .group .item_icon{
+  width: 1rem;
+  height: 1rem;
+  margin: 0 .4rem;
+  background: url(../assets/img/footer/ic_group_nor.png) no-repeat;
+  background-size: 80%;
+  background-position: center center;
+}
+.cube-tab_active .group .item_icon{
+  background: url(../assets/img/footer/ic_group_sel.png) no-repeat !important ;
+  background-size: 80% !important;
+  background-position: center center !important;
+  transition:all .5s;
+}
+.footer .group .item_label{
+  width: 1.8rem;
+  height: .4rem;
+  text-align: center;
+  /* background-color: rgb(0, 238, 255); */
+}
+
+/* 活动奖励 */
+.footer .activity{
+  width: 2.8rem;
+  height: 1.4rem;
+  float: left;
+  /* background-color: rgb(245, 94, 94); */
+  position: relative;
+  top:0rem;
+}
+.footer .activity .item_icon{
+  width: 2rem;
+  height: 1.4rem;
+  margin: 0 .4rem;
+}
+.cube-tab_active .activity .item_icon{
+  width: 2rem;
+  height: 1.4rem;
+  margin: 0 .4rem;
+  
+}
+/* 这是a图片的伪元素 第一个 */
+.activity::before{
+  content: "";   
+  display: block;  
+  width: 1.4rem;
+  height: 1.4rem;
+  position: absolute;
+  top: -.3rem;
+  left: -.1rem;
+  background: url(../assets/img/footer/a.png) no-repeat;
+  background-size: 60%;
+  background-position: center center;
+}
+.cube-tab_active .activity::before{
+
+  animation:mymove .5s infinite;
+	-webkit-animation:mymove .5s infinite; /*Safari and Chrome*/
+  animation-iteration-count:1;
+  -webkit-animation-iteration-count:1; /*Safari and Chrome*/
+}
+/* 这是b图片  */
+.activity .item_icon::before{
+  content: "";   
+  display: block;  
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: -.2rem;
+  left: .5rem;
+  background: url(../assets/img/footer/b.png) no-repeat;
+  background-size: 60%;
+  background-position: center center;
+}
+.cube-tab_active .activity .item_icon::before{
+  animation:mymove .5s infinite;
+	-webkit-animation:mymove .5s infinite; /*Safari and Chrome*/
+  animation-iteration-count:1;
+  -webkit-animation-iteration-count:1; /*Safari and Chrome*/
+}
+/* c图片 */
+.activity .item_icon::after{
+  content: "";   
+  display: block;  
+  width: 1.8rem;
+  height: 1.8rem;
+  position: absolute;
+  top: -.6rem;
+  left: 1.2rem;
+  background: url(../assets/img/footer/c.png) no-repeat;
+  background-size: 60%;
+  background-position: center center;
+}
+.cube-tab_active .activity .item_icon::after{
+  animation:mymove .5s infinite;
+	-webkit-animation:mymove .5s infinite; /*Safari and Chrome*/
+  animation-iteration-count:1;
+  -webkit-animation-iteration-count:1; /*Safari and Chrome*/
+}
+/* 这是在最上成的 活动奖励底片 */
+.activity::after{
+  content: "";   
+  display: block;  
+  width: 2.8rem;
+  height: 1.4rem;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  background: url(../assets/img/footer/bg.png) no-repeat;
+  background-size: 90%;
+  background-position: center center;
+}
+@keyframes mymove
+{
+	0% {background-size: 60%;}
+	50% {background-size: 100%;}
+	100% {background-size: 60%;}
+}
+.footer .phone{
+  width: 1.8rem;
+  height: 1.4rem;
+  float: left;
+  /* background-color: rgb(88, 56, 204); */
+}
+.footer .phone .item_icon{
+  width: 1rem;
+  height: 1rem;
+  margin: 0 .4rem;
+  background: url(../assets/img/footer/ic_contact_nor.png) no-repeat;
+  background-size: 80%;
+  background-position: center center;
+}
+.cube-tab_active .phone .item_icon{
+  background: url(../assets/img/footer/ic_contact_sel.png) no-repeat !important ;
+  background-size: 80% !important;
+  background-position: center center !important;
+  transition:all .5s;
+}
+.footer .phone .item_label{
+  width: 1.8rem;
+  height: .4rem;
+  text-align: center;
+  /* background-color: rgb(0, 238, 255); */
+}
+
+
+.footer .person{
+  width: 1.8rem;
+  height: 1.4rem;
+  float: left;
+  /* background-color: rgb(152, 47, 161); */
+}
+.footer .person .item_icon{
+  width: 1rem;
+  height: 1rem;
+  margin: 0 .4rem;
+  background: url(../assets/img/footer/ic_me_nor.png) no-repeat;
+  background-size: 80%;
+  background-position: center center;
+}
+.cube-tab_active .person .item_icon{
+  background: url(../assets/img/footer/ic_me_sel.png) no-repeat !important ;
+  background-size: 80% !important;
+  background-position: center center !important;
+  transition:all .5s;
+}
+.footer .person .item_label{
+  width: 1.8rem;
+  height: .4rem;
+  text-align: center;
+  /* background-color: rgb(0, 238, 255); */
+}
+
 </style>
