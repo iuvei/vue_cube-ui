@@ -20,7 +20,9 @@
         <cube-slide-item>
               <Address-List></Address-List>
         </cube-slide-item>
-        <cube-slide-item>TEST4</cube-slide-item>
+        <cube-slide-item>
+             <Personal-Center></Personal-Center>
+        </cube-slide-item>
     </cube-slide>
   </div>
 
@@ -35,7 +37,7 @@
       <cube-tab v-for="(item, index) in tabs" :label="item.label" :key="item.label">
         <div :class="item.mark">
             <div class="item_icon"></div>
-            <div class="item_label">{{item.label}}</div>
+            <div class="item_label" v-if="item.label != '活动奖励'">{{item.label}}</div>
         </div>
         
       </cube-tab>
@@ -53,6 +55,7 @@ import MessageGroups from '@/components/home/MessageGroups'        //消息组
 import CrowdGroups from '@/components/home/CrowdGroups'            //群组
 import ActivityReward  from '@/components/home/ActivityReward'    //活动奖励组
 import AddressList  from '@/components/home/AddressList'          //通讯录
+import PersonalCenter  from '@/components/home/PersonalCenter'          //我的(个人中心)
 
 import Notice from '@/components/home/notice'                    //弹窗
 export default {
@@ -62,7 +65,8 @@ export default {
     MessageGroups,
     CrowdGroups,
     ActivityReward,
-    AddressList
+    AddressList,
+    PersonalCenter
   },
   data () {
     return {
@@ -103,7 +107,6 @@ export default {
         },
     }
   },
-
   methods:{
     changeHandler(label) {
       // if you clicked different tab, this methods can be emitted
@@ -169,6 +172,7 @@ export default {
   font-size: 0.3rem !important;
   color: rgb(102, 102, 102);
   margin: 0rem !important;
+  padding: 0 !important;
   -webkit-box-flex: 0;
   -webkit-flex: 0;
   flex: 0;
@@ -349,7 +353,7 @@ export default {
 @keyframes mymove
 {
 	0% {background-size: 60%;}
-	50% {background-size: 100%;}
+	50% {background-size: 90%;}
 	100% {background-size: 60%;}
 }
 .footer .phone{

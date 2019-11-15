@@ -2,24 +2,12 @@
 <div>
     <TopHeader/>
 
-    <div class="SinginUp_box" v-show="isGetAll">
-        <div class="item">
-            <i>📱</i> <input  type="text" placeholder="请输入用户名" autocomplete="off" />
-        </div>
-        <div class="item">
-            <i>📱</i> <input  type="password" placeholder="请输入密码" autocomplete="off" />
-        </div>
-        <div class="item">
-            <i>📱</i> <input  type="text" placeholder="请输入手机号码" >
-        </div>
-        
-        
-        <div class="item">
-            <i>📱</i> <input  type="password" placeholder="请确认密码" autocomplete="off">
+    <div class="SinginUp_box" v-show="isGetAll"  >
+        <div class="item" v-for="item, index in rConfig">
+            <i>📱</i><input  type="text" :placeholder="'请输入'+ item.title + (item.status == 'required' ? ' （必填）' : '')" autocomplete="off" />
         </div>
 
-        <a class=" nz_button nz_bg_gradual_orange nz_color_white"> 注册 </a> 
-
+        <a class=" nz_button nz_bg_gradual_orange nz_color_white" @click="SignUp()"> 注册 </a> 
     </div>      
 </div>
 </template>
@@ -32,8 +20,8 @@ export default {
   components: { TopHeader },
   data () {
     return {
-        isGetAll:true, //临时
-        info:'',
+        isGetAll:false, //临时
+        rConfig:'',
     }
   },
   created(){
@@ -42,25 +30,21 @@ export default {
   methods :{
         //获取注册需要的数据
         getConfig() {
+           this.$http.post('api/user/getUserField',{
+                'type': 'register',
+                'source':2
+            }).then((response)=>{
+                this.rConfig = response.data.data;
+                this.isGetAll = true;
+                console.log(this.rConfig)
+            }).catch((response)=>{
+                console.log(response);
+            })
+        },
 
-        //    this.$http.post('api/user/getUserField',{
-        //         'type': 'register',
-        //         'source':2
-        //     }).then((response)=>{
-        //         console.log(response)
-        //         console.log(123)
-        //         this.info=response;
-        //     }).catch((response)=>{
-        //         console.log(response);
-        //     })
-
-            this.$http.get('http://gank.io/api/data/Android/10/1')
-            .then(response => (console.log(response)))
-            .catch(function (error) { // 请求失败处理
-                console.log(error);
-            });
-
-
+        //注册
+        SignUp(){
+            
         },
         
   }
@@ -71,9 +55,10 @@ export default {
 <style scoped>
 .SinginUp_box{
     width: 10rem;
-    height: calc(100vh - 1.2rem);
+    min-height: calc(100vh - 2.2rem);
     background-color: #fbfbfb;
     overflow: hidden;
+    padding-bottom: 1rem;
 }
 .item{
     width: 100%;

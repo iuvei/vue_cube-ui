@@ -5,19 +5,19 @@
   <HomeHeader :msg="msg"></HomeHeader>
   <!-- 轮播图 -->
   <cube-slide  :options="options" class="slideshow" :data="items" nest-mode="free" direction="horizontal"/>
-
+  <MarqueeMsg></MarqueeMsg>
 <div class="scroll-list-wrap">                        
   <cube-scroll  ref="scroll"  :options="pull_down"  @pulling-down="onPullingDown">
     <ul>
         <li class="msg_item">
-          <i></i>
+            <img src="../../assets/img/MessageGroups/ic_custom_mine.png" alt="">
           <div class="msg_box">
             <div class="title">在线客服</div>
             <div class="describe">有问题,找客服</div>
           </div>
         </li>
         <li class="msg_item">
-          <i></i>
+          <img src="../../assets/img/MessageGroups/ic_custom_friend.png" alt="">
           <div class="msg_box">
             <div class="title">我的好友</div>
             <div class="describe">暂无未读消息</div>
@@ -25,7 +25,7 @@
         </li>
 
         <li class="msg_item_wire" v-for="item in msg_list">
-          <i></i>
+           <img src="" alt="">
           <div class="msg_box">
             <div class="title">{{item.title}}</div>
             <div class="describe">{{item.describe}}</div>
@@ -41,6 +41,7 @@
 
 <script>
 import HomeHeader from '@/components/home/HomeHeader'
+import MarqueeMsg from '@/components/common/MarqueeMsg'
 
 const msg_list = [
   {
@@ -102,7 +103,7 @@ const msg_list = [
 ]
 export default {
   name: 'MessageGroups',
-  components: { HomeHeader },
+  components: { HomeHeader,MarqueeMsg },
   data () {
     return {
       msg:'消息',
@@ -180,8 +181,8 @@ export default {
 /* 容器的宽高 */
 .scroll-list-wrap{
   width: 100%;
-  height: calc(100vh - 5.6rem);  
-  /* 内容高度 要减去 头顶1.2rem 底部1.4rem 和轮播图的3rem */
+  height: calc(100vh - 6.4rem - 1px);  
+  /* 内容高度 要减去 头顶1.2rem 底部1.4rem 和轮播图的3rem   还要减掉广播*/
   background-color: rgb(248, 248, 248)
 }
 
@@ -201,15 +202,15 @@ export default {
   line-height: 1.6rem;
   padding: .1rem;
 }
-.msg_item i,
-.msg_item_wire i {
+.msg_item img,
+.msg_item_wire img {
   display: block;
   float: left;
   width: 1.4rem;
   height: 1.4rem;
   background-color: pink;
   margin:.1rem .2rem;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 /* item标题和描述 */

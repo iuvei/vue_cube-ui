@@ -6,7 +6,7 @@
 
 <!-- 轮播图 -->
 <cube-slide :options="options" class="slideshow" :data="items"/>
-
+ <MarqueeMsg></MarqueeMsg>
 <div class="tab-slide-container">
   <!-- 游戏标题 -->
   <cube-tab-bar v-model="selectedLabelDefault"
@@ -58,9 +58,10 @@
 
 <script>
 import HomeHeader from '@/components/home/HomeHeader'
+import MarqueeMsg from '@/components/common/MarqueeMsg' //广播
 export default {
   name: 'CrowdGroups',
-  components: { HomeHeader },
+  components: { HomeHeader,MarqueeMsg },
   data () {
     return {
       msg:'群组',
@@ -186,8 +187,8 @@ export default {
 
 .tab-slide-container{
   width:100%;
-  height: calc(100vh - 6.2rem); /*1.2 , 3.6 , 1.4 */
-  background-color: rgb(230, 230, 230);
+  height: calc(100vh - 6.4rem - 1px); /*1.2 , 3.6 , 1.4 */
+  background-color: rgb(252, 252, 252);
 }
 
 .game_img{

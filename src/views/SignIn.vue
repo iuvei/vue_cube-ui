@@ -5,10 +5,10 @@
 
      <div class="SinginUp_box">
         <div class="item">
-            <i>🙎‍</i> <input  type="text" placeholder="请输入用户名" autocomplete="off" />
+            <i>🙎‍</i> <input  type="text" placeholder="请输入用户名" v-model="username" autocomplete="off" />
         </div>
         <div class="item">
-            <i>🔒</i> <input  type="password" placeholder="请输入密码" autocomplete="off" />
+            <i>🔒</i> <input  type="password" placeholder="请输入密码" v-model="password" autocomplete="off" />
         </div>
 
         <div class="forget">忘记密码？</div>
@@ -30,12 +30,30 @@ export default {
   components: { TopHeader },
   data () {
     return {
-
+        username:'',
+        password:'',
     }
   },
   methods:{
       SignIn(){
-          this.$router.push("/")
+          this.$router.push("/");
+            if (!this.username || !this.password) return
+            this.$http.get('http://gank.io/api/data/Android/10/1')
+            .then(response => (console.log(response)))
+            .catch(function (error) { // 请求失败处理
+                console.log(error);
+            });
+
+            let res = Login({ username: this.username, password: this.password, codeToken: "123456" });
+            if (res.code == 0) {
+                if (this.checked == true) {
+                this.remember()
+                }
+                this.$store.dispatch('saveUserName', res.data.user_name)
+                this.$store.dispatch('saveUserMoney', res.data.money)
+                window.sessionStorage.setItem('virtual', res.virtual);
+                this.$router.push('/home');
+            }
       }
   },
  
