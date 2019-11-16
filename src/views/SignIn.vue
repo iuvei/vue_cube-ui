@@ -36,24 +36,33 @@ export default {
   },
   methods:{
       SignIn(){
-          this.$router.push("/");
-            if (!this.username || !this.password) return
-            this.$http.get('http://gank.io/api/data/Android/10/1')
-            .then(response => (console.log(response)))
-            .catch(function (error) { // 请求失败处理
-                console.log(error);
-            });
+        //   this.$router.push("/");
 
-            let res = Login({ username: this.username, password: this.password, codeToken: "123456" });
-            if (res.code == 0) {
-                if (this.checked == true) {
-                this.remember()
-                }
-                this.$store.dispatch('saveUserName', res.data.user_name)
-                this.$store.dispatch('saveUserMoney', res.data.money)
-                window.sessionStorage.setItem('virtual', res.virtual);
+        if (!this.username || !this.password){
+            this.$createToast({
+                txt: '请填写完整信息!' ,
+                type: 'txt'
+            }).show()
+            return
+        }
+
+        this.$http.post('api/user/login',{ 'username': this.username, 
+                                           'password': this.password, 
+                                           'codeToken': "123456",
+                                           'source':2}).then(res=>{
+            console.log(res)
+            this.$createToast({
+                txt: res.data.msg ,
+                type: 'txt'
+            }).show()
+            if (res.data.code == 0) {
+                this.$store.dispatch('saveUserName', res.data.data.user_name)
+                this.$store.dispatch('saveUserMoney', res.data.data.money)
+                window.sessionStorage.setItem('virtual', res.data.virtual);
+                window.localStorage.setItem('access_token', res.headers.easysecret);
                 this.$router.push('/home');
             }
+        });
       }
   },
  
@@ -90,7 +99,9 @@ export default {
     font-size: .1rem;
     float: left;
 }
-
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+} 
 .forget{
     display: block;
     color: #ee375f;

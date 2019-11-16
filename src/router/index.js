@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import { TabPanels } from "cube-ui";
 // import Home from "../views/Home.vue";
 
 const Home = r => require.ensure([], () => r(require("@/views/Home.vue")), "Home");
@@ -12,6 +13,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    name: "home",
+    component: Home
+  },
+  {
+    path: "/home",
     name: "home",
     component: Home
   },
@@ -38,5 +44,31 @@ const routes = [
 const router = new VueRouter({
   routes
 });
+
+
+router.beforeEach((to, from, next) => {
+  if(localStorage.getItem('access_token')){ //判断本地是否存在access_token
+    next();
+  }else {
+    if(to.path === '/login'||to.path==='/SignIn' || to.path==='/SignUp'){
+      next();
+    }else {
+      next({
+        path:'/login'
+      })
+    }
+  }
+  /*如果本地 存在 token 则 不允许直接跳转到 登录页面*/
+  if(to.fullPath == "/login"){
+    if(localStorage.getItem('access_token')){
+      next({
+        path:from.fullPath
+      });
+    }else {
+      next();
+    }
+  }
+});
+
 
 export default router;
