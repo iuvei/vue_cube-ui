@@ -24,7 +24,7 @@
           </div>
         </li>
 
-        <li class="msg_item_wire" v-for="item in msg_list">
+        <li class="msg_item_wire" v-for="(item,i) in msg_list" :key=i>
           <i></i>
           <div class="msg_box">
             <div class="title">{{item.title}}</div>
