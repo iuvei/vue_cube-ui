@@ -6,6 +6,7 @@
         </div>
         <span class="title">{{$route.meta.title}}</span>
     </div>
+    <div class="pad"></div>
 </div>
 </template>
 <script>
@@ -35,6 +36,11 @@ export default{
     font-size: .46rem;
     color: #fff;
     font-family: 'Microsoft YaHei';
+    position: fixed;
+}
+.pad{
+    width: 100%;
+    height: 1.2rem;
 }
 .goback{
     height: 1.2rem;

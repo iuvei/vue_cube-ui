@@ -5,10 +5,10 @@
 
      <div class="SinginUp_box">
         <div class="item">
-            <i>🙎‍</i> <input  type="text" placeholder="请输入用户名" autocomplete="off" />
+            <i>🙎‍</i> <input  type="text" placeholder="请输入用户名" v-model="username" autocomplete="off" />
         </div>
         <div class="item">
-            <i>🔒</i> <input  type="password" placeholder="请输入密码" autocomplete="off" />
+            <i>🔒</i> <input  type="password" placeholder="请输入密码" v-model="password" autocomplete="off" />
         </div>
 
         <div class="forget">忘记密码？</div>
@@ -30,12 +30,39 @@ export default {
   components: { TopHeader },
   data () {
     return {
-
+        username:'',
+        password:'',
     }
   },
   methods:{
       SignIn(){
-          this.$router.push("/")
+        //   this.$router.push("/");
+
+        if (!this.username || !this.password){
+            this.$createToast({
+                txt: '请填写完整信息!' ,
+                type: 'txt'
+            }).show()
+            return
+        }
+
+        this.$http.post('api/user/login',{ 'username': this.username, 
+                                           'password': this.password, 
+                                           'codeToken': "123456",
+                                           'source':2}).then(res=>{
+            console.log(res)
+            this.$createToast({
+                txt: res.data.msg ,
+                type: 'txt'
+            }).show()
+            if (res.data.code == 0) {
+                this.$store.dispatch('saveUserName', res.data.data.user_name)
+                this.$store.dispatch('saveUserMoney', res.data.data.money)
+                window.sessionStorage.setItem('virtual', res.data.virtual);
+                window.localStorage.setItem('access_token', res.headers.easysecret);
+                this.$router.push('/home');
+            }
+        });
       }
   },
  
@@ -72,7 +99,9 @@ export default {
     font-size: .1rem;
     float: left;
 }
-
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+} 
 .forget{
     display: block;
     color: #ee375f;

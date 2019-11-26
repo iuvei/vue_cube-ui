@@ -13,5 +13,16 @@ module.exports = {
       postCompile: true,
       theme: true
     }
-  }
+  },
+  devServer: {
+		proxy: {
+			"/api": {
+				target: "http://52.78.141.254:80/api/", //设置调用的接口域名和端口
+				changeOrigin: true, //是否跨域
+				pathRewrite: {
+					"^/api": ""
+				}
+			}
+		}
+	}
 };

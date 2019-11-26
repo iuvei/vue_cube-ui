@@ -5,12 +5,16 @@ import store from "./store";
 import "amfe-flexible";
 import "amfe-flexible";
 
-//通用样式
+//初始化通用样式
 import "./assets/styles/reset.css"
 import "./assets/styles/border.css"
 
 //通用样式
 import "./assets/styles/common.css"
+
+
+import axios from './httpConfig/http.js'
+Vue.prototype.$http = axios
 
 // cube-ui
 import Cube from "cube-ui";

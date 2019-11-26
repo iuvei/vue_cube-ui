@@ -4,10 +4,10 @@
      <div class="banner_box">
         <cube-slide :show-dots="true" ref="slide" direction="horizontal">
             <cube-slide-item>
-               <img  class="banner_img" src="../assets/img/test1.png" alt="">
+               <img  class="banner_img" src="../assets/img/login/ic_login_ad1.png" alt="">
             </cube-slide-item>
             <cube-slide-item>
-               <img  class="banner_img" src="../assets/img/test2.png" alt="">
+               <img  class="banner_img" src="../assets/img/login/ic_login_ad2.png" alt="">
             </cube-slide-item>
         </cube-slide>
      </div>
