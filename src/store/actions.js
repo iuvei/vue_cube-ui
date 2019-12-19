@@ -1,0 +1,192 @@
+
+
+const actions = {
+//开启第三方
+iframeopen({commit},index){
+    try{
+        commit('iframeopen',index);
+    }catch(err){
+    }
+},
+//第三方游戏url
+iframeopenURL({commit},index){
+    try{
+        commit('iframeopenURL',index);
+    }catch(err){
+        console.log(err)
+    }
+},
+//好友消息个数
+Msg_num({commit},msg){
+    try{
+        commit('Msg_num',msg);
+    }catch(err){
+        console.log(err)
+    }
+},
+//群消息个数
+Group_Msg_total({commit},total){
+    try{
+        commit('Group_Msg_total',total);
+    }catch(err){
+        console.log(err)
+    }
+},
+//好友消息
+Friend_Now_Message({commit},msg){
+    try{
+        commit('Friend_Now_Message',msg);
+    }catch(err){
+        console.log(err)
+    }
+},
+//好友消息
+Address_list({commit},list){
+    try{
+        commit('Address_list',list);
+    }catch(err){
+        console.log(err)
+    }
+},
+//房间列表消息
+Red_Room_list({commit},room){
+    try{
+        commit('Red_Room_list',room);
+    }catch(err){
+        console.log(err)
+    }
+},
+//群组消息个数
+Group_Now_Message({commit},msg){
+    try{
+        commit('Group_Now_Message',msg);
+    }catch(err){
+        console.log(err)
+    }
+},
+//群组消息
+Group_Message_msgList({commit},msg){
+    try{
+        commit('Group_Message_msgList',msg);
+    }catch(err){
+        console.log(err)
+    }
+},
+//Websocket 状态
+Websocket_status({commit},status){
+    try{
+        commit('Websocket_status',status);
+    }catch(err){
+        console.log(err)
+    }
+},
+//房间数据
+saveRoomData({commit},RoomData){
+    try{
+        commit('saveRoomData',RoomData);
+    }catch(err){
+        console.log(err)
+    }
+},
+//私聊房间数据
+savePrivateChatData({commit},PrivateChatData){
+    try{
+        commit('savePrivateChatData',PrivateChatData);
+    }catch(err){
+        console.log(err)
+    }
+},
+//用户金额
+saveUserMoney({commit},money){
+    try{
+        commit('saveUserMoney',money);
+    }catch(err){
+        console.log(err)
+    }
+},
+//我的 用户id
+saveMyUid({commit},uid){
+    try{
+        commit('saveMyUid',uid);
+    }catch(err){
+        console.log(err)
+    }
+},
+//token
+saveToken({commit},token){
+    try{
+        commit('saveToken',token);
+    }catch(err){
+        console.log(err)
+    }
+},
+//用户姓名
+saveUserName({commit},name){
+    try{
+        commit('saveUserName',name);
+    }catch(err){
+        console.log(err)
+    }
+},
+//保存推广码
+savePromoteCode({commit},name){
+    try{
+        commit('savePromoteCode',name);
+    }catch(err){
+        console.log(err)
+    }
+},
+//用户昵称
+saveNickName({commit},name){
+    try{
+        commit('saveNickName',name);
+    }catch(err){
+        console.log(err)
+    }
+},
+//用户头像
+saveHeadImgurl({commit},name){
+    try{
+        commit('saveHeadImgurl',name);
+    }catch(err){
+        console.log(err)
+    }
+},
+//个人信息的附加信息
+saveOther({commit},name){
+    try{
+        commit('saveOther',name);
+    }catch(err){
+        console.log(err)
+    }
+},
+
+
+// 以下的网站信息
+//欢迎弹窗信息
+//保存着网站的所有信息
+getWebsiteData({commit},res){
+    try{
+        commit('saveWebsiteData', res);
+    }catch(err){
+        console.log(err)
+    }
+},
+//网站轮播图消息
+saveBannerImgs({commit},data){
+    try{
+      commit('saveBannerImgs',data);
+    }catch(err){
+      console.log(err)
+    }
+},
+
+
+
+
+
+
+
+}
+
+export default actions
